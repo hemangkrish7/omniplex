@@ -8,6 +8,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 apiVersion: '2025-06-30.basil', // Use the exact version string from the error message // Changed the API version string
 });
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: Request) {
   if (req.method !== 'POST') {
     return new NextResponse('Method Not Allowed', { status: 405 });
