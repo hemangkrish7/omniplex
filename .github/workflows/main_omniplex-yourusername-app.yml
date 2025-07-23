@@ -26,7 +26,7 @@ jobs:
       - name: yarn install, build, and test
         run: |
           yarn install
-          yarn build --if-present
+          yarn build
           yarn test --if-present
 
       - name: Zip artifact for deployment
@@ -54,13 +54,6 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
       
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9D6DE48E34FB43269CD59D6B31F68E82 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_512437B2CB9E475B8E839F400ADB5E92 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B04048B296EE46F98F16C619D47A899B }}
-
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
@@ -68,4 +61,3 @@ jobs:
           app-name: 'omniplex-yourusername-app'
           slot-name: 'Production'
           package: .
-          
