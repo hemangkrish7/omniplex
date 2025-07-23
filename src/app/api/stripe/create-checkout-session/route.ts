@@ -1,6 +1,10 @@
 // src/app/api/stripe/create-checkout-session/route.ts
+
+export const dynamic = 'force-dynamic';
+
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
+// ...
 
 // Initialize Stripe with your Secret Key.
 // The '!' tells TypeScript that process.env.STRIPE_SECRET_KEY will not be undefined at runtime.
@@ -8,7 +12,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 apiVersion: '2025-06-30.basil', // Use the exact version string from the error message // Changed the API version string
 });
 
-export const dynamic = 'force-dynamic';
+
 
 export async function POST(req: Request) {
   if (req.method !== 'POST') {
