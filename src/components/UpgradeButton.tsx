@@ -2,7 +2,7 @@
 'use client'; // This directive is necessary for client-side components in Next.js App Router
 
 import React from 'react';
-// import { loadStripe } from '@stripe/stripe-js'; // Not strictly needed for direct window.location.href redirect
+// import { loadStripe } from '@stripe/stripe-js';
 
 const UpgradeButton: React.FC = () => {
   const handleUpgrade = async () => {
